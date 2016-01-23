@@ -4,20 +4,10 @@
 using namespace std;
 
 /// <summary>
-/// Operators the specified out.
+/// Represents the width.
 /// </summary>
-/// <param name="out">The out.</param>
-/// <param name="v">The v.</param>
-/// <returns></returns>
-ostream & operator<<(ostream &out, vector<double> &v)
-{
-	for (vector<double>::iterator it = v.begin(); it != v.end(); ++it)
-	{
-		out << *it << " ";
-	}
-	return out;
-}
-
+/// <param name="n">The number in the vector container.</param>
+/// <returns>width</returns>
 int repWidth(int n)
 {
 	int neg = 0, digits;
@@ -31,4 +21,46 @@ int repWidth(int n)
 
 	return digits + neg;
 
+}
+
+/// <summary>
+/// find the Max width in the mutli vector.
+/// </summary>
+/// <param name="M">The multivector</param>
+/// <returns>max width within the vector</returns>
+int maxWidth(vector<vector<int> > M)
+{
+	int max = 0, nextWid;
+
+	vector<vector<int> >::const_iterator row;
+	vector<int>::const_iterator col;
+
+	for (row = M.begin(); row != M.end(); ++row)
+	{
+		for (col = row->begin(); col != row->end(); ++col)
+		{
+			nextWid = repWidth(*col);
+			if (nextWid > max)
+			{
+				max = nextWid;
+			}
+		}
+	}
+	return max;
+}
+
+void display(ostream & out, const vector<vector<int> > & M)
+{
+	int wid = maxWidth(M) + 2;
+	vector<vector<int> >::const_iterator row;
+	vector<int>::const_iterator col;
+
+	for (row = M.begin(); row != M.end(); ++row)
+	{
+		for (col = row->begin(); col != row->end(); ++col)
+		{
+			out << setw(wid) << *col;
+		}
+		out << endl;
+	}
 }

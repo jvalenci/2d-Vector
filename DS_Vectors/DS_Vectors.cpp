@@ -12,15 +12,21 @@ using namespace std;
 /// <returns></returns>
 int main()
 {
-	int holdVal;
-	const int ROW = 4;
-	const int COL = 6;
+	int holdTheScreen;
 
-	vector< vector<double> > multiVector(ROW, vector<double>(COL, 32.2));
+	//create a 5 by 6 two-dimensional vector containing all ones
+	const int ROW = 10;
+	const int COL = 10;
 
-	cout << repWidth(1000000000);
+	vector< vector<int> > multiVector(ROW, vector<int>(COL, 1));
+
+	//increase the digit size of one entry
+	multiVector[1][4] = 1000;
+
+	//output the table
+	display(cout, multiVector);
 	
-	cin >> holdVal;
+	cin >> holdTheScreen;
     return 0;
 }
 

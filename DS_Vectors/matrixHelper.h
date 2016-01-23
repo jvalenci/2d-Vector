@@ -6,7 +6,7 @@
 
 using namespace std;
 
-ostream & operator<<(ostream &out, vector<double> v);
 int repWidth(int n);
-
+int maxWidth(vector<vector<int> > M);
+void display(ostream & out, const vector<vector<int> > & M);
 #endif
