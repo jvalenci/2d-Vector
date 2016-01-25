@@ -10,6 +10,8 @@ int main()
 
 	dsNode mainNode, insertingNode(4);
 	mainNode.nextNode = new dsNode(400);
+	mainNode.nextNode->nextNode = new dsNode(200);
+	mainNode.nextNode->nextNode->nextNode = new dsNode(600);
 
 	mainNode.insertNodeBeforeLast(&mainNode, &insertingNode);
 
