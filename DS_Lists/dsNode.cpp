@@ -21,32 +21,31 @@ dsNode::dsNode(int data, dsNode *next) :nodeData(data), nextNode(next)
 /// </summary>
 dsNode::~dsNode()
 {
-	delete(nextNode);
 	--dsNode::nodeCount;
 }
 
 void dsNode::insertNodeBeforeLast( dsNode *first, dsNode *insertionNode)
 {
-	this->currNode = new dsNode(*first);
+	dsNode *head = this;
 	
 	//check and see if the next node is empty if it is then the new node should be first in the linked list
-	if (currNode->nextNode == nullptr)
+	if (head->nextNode == nullptr)
 	{
-		insertionNode->nextNode = currNode;
-		first->currNode = currNode;
-		*first = *insertionNode;
+		insertionNode->nextNode = head;
+		*head = *insertionNode;
 		insertionNode->nodeData = -1;
 		
 	}
 	else
 	{
-		currNode->prevNode = new dsNode(*first);
-		while (currNode->nextNode != nullptr)
+
+		while (head->nextNode != nullptr)
 		{
-			currNode = currNode->nextNode;
-			prevNode = prevNode->nextNode;
+			head->prevNode = head;
+			head = head->nextNode;
 		}
-		insertionNode->nextNode = currNode;
+		insertionNode->nextNode = head;
 		prevNode->nextNode = insertionNode;
+		
 	}
 }

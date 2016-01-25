@@ -9,7 +9,7 @@ int main()
 	int holdTheScreen;
 
 	dsNode mainNode, insertingNode(4);
-	//mainNode.nextNode = new dsNode(400);
+	mainNode.nextNode = new dsNode(400);
 
 	mainNode.insertNodeBeforeLast(&mainNode, &insertingNode);
 
